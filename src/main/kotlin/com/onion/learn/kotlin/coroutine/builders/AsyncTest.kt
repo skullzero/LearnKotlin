@@ -1,9 +1,6 @@
 package com.onion.learn.kotlin.coroutine.builders
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlin.random.Random
 
 /*
@@ -16,7 +13,8 @@ suspend fun main() = performAsync()
 @OptIn(ExperimentalCoroutinesApi::class)
 suspend fun performAsync() {
     /*
-        coroutineScope是一个挂起函数，它会等待所有包含的协程执行完毕后才退出
+        coroutineScope是一个挂起函数，它会等待所有包含的协程执行完毕后才退出, 不必轮询才能知道所有协程是否
+        执行完毕，这是它的优点之一
         与runBlocking不同的是，它的优点是不阻塞主线程，但是必须作为suspend函数的一部分来调用
     */
     coroutineScope {

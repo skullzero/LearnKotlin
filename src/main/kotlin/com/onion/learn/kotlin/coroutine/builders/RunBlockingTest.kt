@@ -15,6 +15,7 @@ fun main() {
             第一个是CoroutineContext,有默认值；
             第二个是以suspend函数作为参数，然后将其作为扩展函数添加到CoroutineScope上，
             执行该函数，然后返回提供的函数返回的任意值。
+        launch和async的定义也是类似的参数
     */
     runBlocking {
         println("Hello, ")
