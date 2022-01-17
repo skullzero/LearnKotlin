@@ -1,5 +1,7 @@
 package com.onion.learn.kotlin.collection
 
+import java.util.*
+
 fun main() {
     /*
         map函数
@@ -8,13 +10,13 @@ fun main() {
     */
     println("------------------------------------map------------------------------------")
     val fruitList = listOf("Apple", "Banana", "Pear", "Grape", "Orange")
-    val newFruitList = fruitList.map { it.toUpperCase() }
+    val newFruitList = fruitList.map { it.uppercase(Locale.getDefault()) }
     for(i in newFruitList) {
         println(i)
     }
 
     /*
-        filter函数
+        filter/filterNot函数
         用来过滤集合中的数据，可以单独使用，也可以配合map使用
     */
     println("------------------------------------filter------------------------------------")
@@ -25,8 +27,14 @@ fun main() {
 
     println("------------------------------------filter + map------------------------------------")
     val newFruitList3 = fruitList.filter { it.length > 4 }
-                                    .map { it.toUpperCase() }
+                                    .map { it.uppercase(Locale.getDefault()) }
     for(i in newFruitList3) {
+        println(i)
+    }
+
+    println("------------------------------------filterNot------------------------------------")
+    val newFruitList4 = fruitList.filterNot { it.length > 4 }
+    for(i in newFruitList4) {
         println(i)
     }
 
