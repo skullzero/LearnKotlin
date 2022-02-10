@@ -56,7 +56,10 @@ fun sum(num1: Int, num2: Int = 2, num3: Int = 3): Int {
 }
 
 /*
-    可变数量的参数，需要对参数用vararg进行修饰，且一般是函数对最后一个参数。
+    可变参数
+    1. 使用vararg修饰
+    2. 一般是最后一个参数
+    3. 如果不放在最后，后面的参数要使用命名参数传值
 */
 fun <T> toList(vararg items: T): List<T> {
     val result = ArrayList<T>()

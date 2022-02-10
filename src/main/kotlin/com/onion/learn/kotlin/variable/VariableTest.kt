@@ -40,3 +40,13 @@ fun main() {
         变成来一个类，它拥有自己的方法和继承结构。
     */
 }
+
+class User {
+    companion object {
+        /*
+            val是kotlin的关键字；而const是一个修饰符, 修饰编译时常量
+            const必须和val一起使用，而不是代替val
+        */
+        const val MIN_AGE = 1
+    }
+}
