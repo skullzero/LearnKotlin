@@ -42,24 +42,26 @@ import kotlinx.coroutines.runBlocking
         }
     }
 
-    fun main() = runBlocking {
-        //1s后结果被一次性输出
-        fooWithoutFlow().forEach { value -> println("without flow $value") }
+    fun main() {
+        runBlocking {
+            //1s后结果被一次性输出
+            fooWithoutFlow().forEach { value -> println("without flow $value") }
 
-        println("-------------------------------------")
+            println("-------------------------------------")
 
-        // Launch a concurrent coroutine to check if the main thread is blocked
-        launch {
-            for (k in 1..3) {
-                println("I'm not blocked $k")
-                delay(100)
+            // Launch a concurrent coroutine to check if the main thread is blocked
+            launch {
+                for (k in 1..3) {
+                    println("I'm not blocked $k")
+                    delay(100)
+                }
             }
-        }
 
-        /*
-            Hot streams push values even when there is no one consuming them.
-            However, cold streams, start pushing values only when you start collecting.
-            Kotlin Flow is an implementation of cold streams.
-        */
-        foo().collect { value -> println("with flow $value") }
+            /*
+                Hot streams push values even when there is no one consuming them.
+                However, cold streams, start pushing values only when you start collecting.
+                Kotlin Flow is an implementation of cold streams.
+            */
+            foo().collect { value -> println("with flow $value") }
+        }
     }
