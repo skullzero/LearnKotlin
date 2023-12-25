@@ -1,9 +1,8 @@
 package com.onion.learn.kotlin.coroutine.flow
 
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -53,10 +52,9 @@ suspend fun testColdFlow() {
     }
 }
 
-fun main() {
-    runBlocking {
+suspend fun main() {
+    coroutineScope {
         testColdFlow()
-        delay(5000)
     }
 }
 

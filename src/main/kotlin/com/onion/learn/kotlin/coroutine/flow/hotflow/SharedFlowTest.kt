@@ -25,8 +25,9 @@ suspend fun testShareIn() {
          shareIn的参数：
             scope 是创建热流的协程域
             started 为热流的启动模式;
-                Eagerly没订阅/观察就发送数据
-                WhileSubscribed()有订阅时才发送数据
+                Eagerly 没订阅/观察就发送数据; shareIn被调用后，共享数据(立即执行flow发送数据的代码块)是立即开始，永远不会停止。
+                Lazily 第一个collect(订阅者)被调用后，共享数据(flow发送数据的代码块)才会开始，永远不会停止。
+                WhileSubscribed() 第一个collect(订阅者)被调用后，共享数据(flow发送数据的代码块)才会开始，在最后一个订阅者消失时立即停止(默认情况下)，并永久保留重播缓存(默认情况下)。
             replay为缓存数据的数量，不能设置为0，否则在没有订阅者时会立刻丢弃缓存的数据
                 如果reply设置的小于实际的数据数量，则取最新的N条
          */
